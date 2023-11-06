@@ -11,12 +11,13 @@
     width: 100%;
     height: 50px;
     display: flex;
+    justify-content: space-around;
     z-index: 1;
 }
 
 #btn-cont {
     padding: 20px;
-    width: 100%;
+    width: 80%;
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -36,5 +37,11 @@ button {
 }
 
 #choose_prize {
-    background-color: white;
+    background-color: black;
+    padding: 20px;
+    width: 20%;
+}
+
+.white {
+    color: white;
 }
