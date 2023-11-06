@@ -123,5 +123,7 @@ smallCircle.endFill();
 smallCircle.x = 0;
 smallCircle.y = 0;
 
+smallCircle.interactive = true;
+smallCircle.buttonMode = true;
 
 circleContainer.addChild(smallCircle);
