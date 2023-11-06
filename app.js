@@ -146,5 +146,51 @@ app.stage.addChild(triangle);
 
 
 smallCircle.addEventListener('pointerdown', () => {
-    console.log('Clicked');
+    if (chooseNumber !== null && !spinning) {
+        spinning = true;
+        const initialRotation = circleContainer.rotation;
+        const degreesToRotate = 1440;
+        const targetRotation = initialRotation - (degreesToRotate * (Math.PI / 180));
+        const leftRotationDuration = 2000;
+        const startTime = performance.now();
+
+    function rotateLeft(currentTime) {
+        const elapsedTime = currentTime - startTime;
+        if (elapsedTime < leftRotationDuration) {
+            const progress = elapsedTime / leftRotationDuration;
+            const currentRotation = initialRotation - (progress * degreesToRotate * (Math.PI / 180));
+            circleContainer.rotation = currentRotation;
+            requestAnimationFrame(rotateLeft);
+        } else {
+            circleContainer.rotation = targetRotation;
+            const stopIndex = chooseNumber; 
+            const degrees = 1440; 
+            const stopAngle = 1440 - ((stopIndex - (elementsAndColors.length / 2)) / segmentCount) * (Math.PI * 2) + (degrees * (Math.PI / 180));
+            const triangleOffset = (Math.PI * 2) / segmentCount / 2.5; 
+            const finalStopAngle = stopAngle - triangleOffset;
+
+            const rotationDuration = 1000; 
+
+            const startRotation = circleContainer.rotation;
+            const startTime = performance.now();
+
+            function rotateToFinal(currentTime) {
+                const elapsedTime = currentTime - startTime;
+                if (elapsedTime < rotationDuration) {
+                    const progress = elapsedTime / rotationDuration;
+                    const currentRotation = startRotation + (progress * (finalStopAngle - startRotation));
+                    circleContainer.rotation = currentRotation;
+                    requestAnimationFrame(rotateToFinal);
+                } else {
+                    circleContainer.rotation = finalStopAngle;
+                    spinning = false;
+                }
+            }
+
+            requestAnimationFrame(rotateToFinal);
+        }
+    }
+
+    requestAnimationFrame(rotateLeft);
+    }
 });
