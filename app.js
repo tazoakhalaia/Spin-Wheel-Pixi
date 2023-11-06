@@ -65,3 +65,32 @@ circleContainer.addChild(circle);
 circleContainer.x = app.screen.width / 2;
 circleContainer.y = app.screen.height / 2;
 app.stage.addChild(circleContainer);
+
+
+const segmentCount = elementsAndColors.length;
+const segmentSize = (Math.PI * 2) / segmentCount;
+const rotationOffset = Math.PI / 9; 
+const segment = new PIXI.Graphics();
+
+for (let i = 0; i < segmentCount; i++) {
+    const label = new PIXI.Text(elementsAndColors[i].number?.toString() || '', { fill: 0x000000, fontSize: 18 });
+
+        const color = elementsAndColors[i].color; 
+        segment.beginFill(color);
+        const startAngle = i * segmentSize + rotationOffset;
+
+        segment.moveTo(0, 0);
+        segment.lineTo(0, 0); 
+        segment.arc(0, 0, 200, startAngle, (i + 1) * segmentSize + rotationOffset); 
+        segment.lineTo(0, 0); 
+        segment.endFill();
+        label.anchor.set(0.5, 0.5);
+        label.position.set(
+            125 * Math.cos((i + 0.5) * segmentSize + rotationOffset),
+            125 * Math.sin((i + 0.5) * segmentSize + rotationOffset)
+        );
+
+        circleContainer.addChild(segment);
+        circleContainer.addChild(label);
+    
+}
