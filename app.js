@@ -133,7 +133,7 @@ circleContainer.addChild(smallCircle);
 
 const triangle = new PIXI.Graphics();
 const scale = 0.5; 
-triangle.beginFill(0xFF0000); 
+triangle.beginFill(0000000); 
 triangle.lineStyle(2, 0x000000); 
 triangle.moveTo(0, -25 * scale); 
 triangle.lineTo(15 * scale, 25 * scale); 
