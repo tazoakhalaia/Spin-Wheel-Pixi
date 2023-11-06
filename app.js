@@ -25,6 +25,7 @@ let elementsAndColors = [
 let buttonDiv = document.getElementById('btn-cont');
 let chooseNumber = null;
 let circleContainerRadius = 200
+let spinning = false
 
 elementsAndColors.forEach((item, index) => {
     if (item.img) {
@@ -141,3 +142,9 @@ triangle.x = circleContainer.x;
 triangle.y = circleContainer.y - circleContainerRadius + 160;
 
 app.stage.addChild(triangle); 
+
+
+
+smallCircle.addEventListener('pointerdown', () => {
+    console.log('Clicked');
+});
