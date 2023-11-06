@@ -75,6 +75,27 @@ const segment = new PIXI.Graphics();
 for (let i = 0; i < segmentCount; i++) {
     const label = new PIXI.Text(elementsAndColors[i].number?.toString() || '', { fill: 0x000000, fontSize: 18 });
 
+    if (numbersAndColors[i].img) {
+        const color = elementsAndColors[i].bgColor; 
+        segment.beginFill(color);
+        const startAngle = i * segmentSize + rotationOffset;
+        segment.moveTo(0, 0);
+        segment.lineTo(0, 0); 
+        segment.arc(0, 0, 200, startAngle, (i + 1) * segmentSize + rotationOffset); 
+        segment.lineTo(0, 0); 
+        segment.endFill();
+        const image = PIXI.Sprite.from(numbersAndColors[i].img);
+        image.anchor.set(0.5);
+        image.width = 40;
+        image.height = 40;
+        image.position.set(
+            125 * Math.cos((i + 0.5) * segmentSize + rotationOffset),
+            125 * Math.sin((i + 0.5) * segmentSize + rotationOffset)
+        );
+        circleContainer.addChild(segment);
+        circleContainer.addChild(image);
+    }
+     else {
         const color = elementsAndColors[i].color; 
         segment.beginFill(color);
         const startAngle = i * segmentSize + rotationOffset;
@@ -92,5 +113,5 @@ for (let i = 0; i < segmentCount; i++) {
 
         circleContainer.addChild(segment);
         circleContainer.addChild(label);
-    
+    }
 }
