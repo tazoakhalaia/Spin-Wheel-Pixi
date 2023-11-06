@@ -17,8 +17,6 @@ let elementsAndColors = [
     { number: 9, color: 0x00FFFF }, 
     { number: 10, color: 0xFFA500 }, 
     { img: 'img/icon2.png', color: 0x808080 }, 
-    { number: 11, color: 0x9900FF },
-    
 ];
 
 
@@ -90,8 +88,8 @@ for (let i = 0; i < segmentCount; i++) {
         segment.endFill();
         const image = PIXI.Sprite.from(elementsAndColors[i].img);
         image.anchor.set(0.5);
-        image.width = 40;
-        image.height = 40;
+        image.width = 15;
+        image.height = 15;
         image.position.set(
             125 * Math.cos((i + 0.5) * segmentSize + rotationOffset),
             125 * Math.sin((i + 0.5) * segmentSize + rotationOffset)
