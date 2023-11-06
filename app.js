@@ -24,6 +24,7 @@ let elementsAndColors = [
 
 let buttonDiv = document.getElementById('btn-cont');
 let chooseNumber = null;
+let circleContainerRadius = 200
 
 elementsAndColors.forEach((item, index) => {
     if (item.img) {
@@ -55,3 +56,12 @@ elementsAndColors.forEach((item, index) => {
     }
 });
 
+const circle = new PIXI.Graphics();
+circle.beginFill(0xFF0000);
+circle.drawCircle(0, 0, circleContainerRadius);
+circle.endFill();
+const circleContainer = new PIXI.Container();
+circleContainer.addChild(circle);
+circleContainer.x = app.screen.width / 2;
+circleContainer.y = app.screen.height / 2;
+app.stage.addChild(circleContainer);
