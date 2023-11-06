@@ -127,3 +127,17 @@ smallCircle.interactive = true;
 smallCircle.buttonMode = true;
 
 circleContainer.addChild(smallCircle);
+
+
+const triangle = new PIXI.Graphics();
+const scale = 0.5; 
+triangle.beginFill(0xFF0000); 
+triangle.lineStyle(2, 0x000000); 
+triangle.moveTo(0, -25 * scale); 
+triangle.lineTo(15 * scale, 25 * scale); 
+triangle.lineTo(-15 * scale, 25 * scale); 
+triangle.lineTo(0, -25 * scale); 
+triangle.x = circleContainer.x;
+triangle.y = circleContainer.y - circleContainerRadius + 160;
+
+app.stage.addChild(triangle); 
